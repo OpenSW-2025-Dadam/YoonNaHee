@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Question Detail</title>
+</head>
+<body>
+
+<h2 th:text="${question.subject}"></h2>
+<p th:text="${question.content}"></p>
+
+<hr>
+
+<h3>답변</h3>
+
+<p>
+    <span th:text="${#lists.size(question.answerList)}"></span>개의 답변이 있습니다
+</p>
+
+<ul>
+    <li th:each="answer : ${question.answerList}">
+        <p th:text="${answer.content}"></p>
+        <p th:text="${answer.createDate}"></p>
+    </li>
+</ul>
+
+<hr>
+
+<form th:action="@{|/answer/create/${question.id}|}" method="post">
+    <textarea name="content" rows="5" cols="50"></textarea>
+    <br>
+    <input type="submit" value="답변 등록">
+</form>
+
+</body>
+</html>

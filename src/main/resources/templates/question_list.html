@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Question List</title>
+</head>
+<body>
+<h2>질문 목록</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성일</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="question : ${questionList}">
+        <td th:text="${question.id}"></td>
+        <td>
+            <a th:href="@{|/question/detail/${question.id}|}"
+               th:text="${question.subject}">
+            </a>
+        </td>
+        <td th:text="${question.createDate}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
