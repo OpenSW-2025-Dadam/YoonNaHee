@@ -1,7 +1,9 @@
 package com.mysite.sbb.question;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.mysite.sbb.DataNotFoundException;
@@ -22,5 +24,13 @@ public class QuestionService {
         Optional<Question> oq = this.questionRepository.findById(id);
         if (oq.isPresent()) return oq.get();
         else throw new DataNotFoundException("question not found");
+    }
+
+    public void create(String subject, String content) {
+        Question q = new Question();
+        q.setSubject(subject);
+        q.setContent(content);
+        q.setCreateDate(LocalDateTime.now());
+        questionRepository.save(q);
     }
 }

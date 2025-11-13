@@ -1,0 +1,25 @@
+<html layout:decorate="~{layout}"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<div layout:fragment="content">
+
+    <form th:action="@{/question/create}"
+          th:object="${questionForm}"
+          method="post">
+
+        <div th:replace="~{form_errors :: formErrorsFragment}"></div>
+
+        <input th:field="*{subject}" class="form-control mb-3"
+               placeholder="제목 입력">
+
+        <textarea th:field="*{content}" rows="10"
+                  class="form-control mb-3"
+                  placeholder="내용 입력"></textarea>
+
+        <button class="btn btn-primary">저장하기</button>
+    </form>
+
+</div>
+
+</html>
