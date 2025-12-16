@@ -1,7 +1,6 @@
 textarea {
-    width: 100%;
+    width:100%;
 }
-
-.btn-area {
-    margin-top: 10px;
+input[type=submit] {
+    margin-top:10px;
 }
